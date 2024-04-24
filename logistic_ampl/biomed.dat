@@ -1,0 +1,35 @@
+data;
+
+set NODES := A, B, C, D, E, F, G; 
+set START := A; 
+set END := G; 
+set INTERMEDIATE := B, C, D, E, F;
+
+set EDGES := 
+(A,B)
+(A,C)
+(C,E)
+(B,D)
+(C,D)
+(D,E)
+(D,F)
+(E,G)
+(E,F)
+(F,G);
+
+param: variable_costs, capacity, fixed_costs :=
+A,B    300             10        10000
+A,C    150             20        15000
+C,E    500             10        30000
+B,D    300             10        18000
+C,D    300             20        20000
+D,E    500             7         12000
+D,F    350             8         16000
+E,G    200             20        16000
+E,F    250             17        12000
+F,G    300             15        10000; 
+
+param target_capacity := 15;
+
+
+

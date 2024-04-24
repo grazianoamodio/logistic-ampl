@@ -1,0 +1,33 @@
+reset;
+model biomed_var.mod;
+data biomed.dat;
+option solver cplex; 
+
+for {i in 1..2}{
+  if i == 1 then {
+    drop Unique_Path;
+    printf "SOLUZIONE AL PUNTO 2\n";
+  }
+  if i == 2 then {
+    restore Unique_Path;
+    printf "SOLUZIONE AL PUNTO 4\n";
+  }
+  
+  solve;
+  
+  if solve_result == "solved" then{
+    display Bandwidth;
+    printf "Costi totali: %f Euro\n", total_costs;
+  }
+  else {
+    printf "La soluzione non é stata trovata. Codice solve_result: %s\n", solve_result;
+  }
+  printf "\n------------------------------------------\n\n";
+}
+
+
+
+
+
+
+
